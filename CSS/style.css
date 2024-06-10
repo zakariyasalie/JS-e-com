@@ -1,0 +1,46 @@
+*,
+*::after
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* display -> grid */
+body {
+    display: grid;
+}
+
+/* number of rows */
+body {
+    grid-template-rows: auto minmax(100%, 100dvh) auto;
+}
+
+/* navbar */
+.navbar{
+
+    & img[alt='logo'] {
+        width: 5rem;
+    }
+}
+
+/* All the images */
+img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+/*text-align: center */
+:is(h2, footer p) {
+    text-align: center;
+}
+
+.card {
+    width: 18rem;
+    padding-top: 1rem;
+}
+
