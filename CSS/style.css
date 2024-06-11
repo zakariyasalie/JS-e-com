@@ -28,7 +28,7 @@ body {
 }
 
 /* All the images */
-img {
+.img_url {
     aspect-ratio: 1;
     object-fit: cover;
     object-position: center;
@@ -44,3 +44,49 @@ img {
     padding-top: 1rem;
 }
 
+/* Styling for product grid */
+.card {
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    width: 250px;
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+  
+  .card:hover {
+    border-color: red;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    color: black;
+  }
+  
+  .card-text {
+    color: grey;
+  }
+  
+  .btn-primary {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: brightred; /* Assuming brightred is defined in your stylesheet */
+  }
+  

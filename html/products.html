@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <!-- Custom's styling -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/CSS/style.css" />
     <title>Products</title>
   </head>
   <body>
@@ -56,6 +56,28 @@
         </h2>
       </div>
       <div class="row" ourStore></div>
+      <div class="row justify-content-between my-2 d-block d-md-flex p-2 ">
+        <div class="col">
+            <input class="form-control" type="text" placeholder="Search product by name" searchProduct>
+        </div>
+        <div class="col">
+            <!-- <button class="btn btn-success" type="button" sorting>Sorting</button> -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter By 
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">BMW</a></li>
+                    <li><a class="dropdown-item" href="#">Nissan</a></li>
+                    <li><a class="dropdown-item" href="#">Audi</a></li>
+                    <li><a class="dropdown-item" href="#">Ford</a></li>
+                    <li><a class="dropdown-item" href="#">Volswagen</a></li>
+                </ul>
+                <i class="bi bi-funnel-fill color-d"></i>
+            </div>
+        </div>
+    </div>
+    <div class="row gap-2 justify-content-between mx-2" recentProducts></div>
     </main>
     <footer class="container-fluid">
       <div class="row">
@@ -69,6 +91,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
       <!-- Custom's script -->
-      <script src="../script/products.js"></script>
+      <script src="/script/products.js"></script>
   </body>
 </html>
