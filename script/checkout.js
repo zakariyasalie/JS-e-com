@@ -1,46 +1,41 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const cartItems = document.getElementById('cartItems');
-    const total = document.getElementById('total');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-  
-    // Retrieve items from localStorage
-    const cart = JSON.parse(localStorage.getItem('checkout')) || [];
-  
-    // Display cart items
-    function displayCart() {
-      cartItems.innerHTML = '';
-      let totalPrice = 0;
-  
-      cart.forEach((item) => {
-        totalPrice += item.amount;
-        cartItems.innerHTML += `
-          <div class="cart-item">
-            <img src="${item.img_url}" alt="${item.productName}">
-            <div>
-              <h3>${item.productName}</h3>
-              <p>${item.description}</p>
-              <p>$${item.amount}</p>
-            </div>
-          </div>
-        `;
-      });
-  
-      // Display total price
-      total.textContent = `Total: $${totalPrice}`;
-    }
-  
-    displayCart();
-  
-    // Checkout button event listener
-    checkoutBtn.addEventListener('click', function () {
-      // Implement your checkout logic here
-      // For example: clear cart, redirect to payment page, etc.
-      localStorage.removeItem('checkout');
-      alert('Checkout completed!');
-      displayCart(); // Refresh cart display
-    });
-  
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+// Add to cart functionality
+let checkoutItems = JSON.parse(localStorage.getItem('checkout')) || [];
+
+// Display checkout items
+function displayCheckoutItems() {
+  const checkoutWrapper = document.getElementById('checkout-wrapper');
+  checkoutWrapper.innerHTML = '';
+  let totalAmount = 0;
+  checkoutItems.forEach((item, index) => {
+    checkoutWrapper.innerHTML += `
+      <div class="checkout-item">
+        <img src="${item.img_url}" alt="${item.productName}">
+        <h5>${item.productName}</h5>
+        <p>Amount: ${item.amount} x $${item.price} = $${item.amount * item.price}</p>
+        <button class="btn btn-danger" onclick="removeFromCart(${index})">Remove</button>
+      </div>
+    `;
+    totalAmount += item.amount * item.price;
   });
-  
+  document.getElementById('total-amount').textContent = `Total Amount: $${totalAmount.toFixed(2)}`;
+}
+
+// Remove from cart functionality
+function removeFromCart(index) {
+  checkoutItems.splice(index, 1);
+  localStorage.setItem('checkout', JSON.stringify(checkoutItems));
+  displayCheckoutItems();
+}
+
+// Call displayCheckoutItems() function when page loads
+document.addEventListener('DOMContentLoaded', displayCheckoutItems);
+
+// Add event listener to confirm button
+document.getElementById('confirm-button').addEventListener('click', () => {
+  // Process the order here, e.g. send a request to the server to complete the transaction
+  console.log('Order confirmed!');
+  // Clear the checkout items
+  checkoutItems = [];
+  localStorage.setItem('checkout', JSON.stringify(checkoutItems));
+  displayCheckoutItems();
+});
