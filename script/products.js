@@ -10,7 +10,7 @@ let products =
                         productName: "BMW M4 GTS",
                         category: "Sports Car",
                         description: "BMW M4 GTS",
-                        amount: 2500000,
+                        amount: "R2500000",
                         img_url: "https://zakariyasalie.github.io/allimages/images/M4GTS1.jpg" 
                     },
                       {
@@ -118,3 +118,34 @@ window.onload = () => {
 
 14
 
+// Function to display products based on filtering
+function displayFilteredProducts(category) {
+    try {
+        if (category === "All") {
+            displayProducts(products);
+            return;
+        }
+        let filteredProduct = products.filter(product => product.category.toLowerCase() === category.toLowerCase());
+        displayProducts(filteredProduct);
+        if (!filteredProduct.length) throw new Error(`No ${category} products found`);
+    } catch (e) {
+        wrapper.textContent = e.message || 'Please try again later';
+    }
+}
+
+// Function to add event listeners to filter buttons
+function addFilterEventListeners() {
+    // Get all filter buttons
+    const filterButtons = document.querySelectorAll('.dropdown-item');
+    
+    // Add click event listener to each filter button
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.textContent.trim();
+            displayFilteredProducts(category);
+        });
+    });
+}
+
+// Call addFilterEventListeners function to add event listeners to filter buttons
+addFilterEventListeners();
