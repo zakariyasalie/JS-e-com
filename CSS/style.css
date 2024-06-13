@@ -194,3 +194,36 @@ th, td {
 th {
   background-color: #f0f0f0;
 }
+
+body {
+  font-family: Arial, sans-serif;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+th {
+  background-color: #f0f0f0;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 20px;
+  border: 1px solid red;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.social-media a img {
+  margin-right: 10px;
+}
+
+.social-media a i {
+  margin-right: 5px;
+}
+

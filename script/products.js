@@ -67,6 +67,9 @@ let products = JSON.parse(localStorage.getItem('products')) || [
   }
   
   // Function to filter products by search input
+
+  displayProducts(products);
+  
   searchProduct.addEventListener('keyup', () => {
     let filteredProducts = products.filter(product => product.productName.toLowerCase().includes(searchProduct.value.toLowerCase()));
     displayProducts(filteredProducts);
