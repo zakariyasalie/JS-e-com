@@ -351,6 +351,7 @@ main .container-fluid .row .col-md-6 {
   border: 1px solid red;
   padding: 10px;
   margin-bottom: 50px;
+  
 }
 
 
@@ -360,4 +361,35 @@ main .container-fluid .row .col-md-6 {
 
   .hometext {
     color: red !important;
+  }
+
+  .img-fluid, h2, h3, p {
+    margin-bottom: 0px;
+    margin-top: 100px;
+  }
+
+  #Team p {
+    color: #fffafa; /* or any other color that provides sufficient contrast */
+  }
+
+  #Team * {
+    color: white;
+  }
+
+  #column1, #column2 {
+    border: 1px solid red;
+    color: white;
+  }
+  
+  .column {
+    background-color: rgba(0, 0, 0, 0.512);
+  }
+
+  main .container-fluid .row .col-md-6 {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
+
+  .adminlabel {
+    color: red;
   }
