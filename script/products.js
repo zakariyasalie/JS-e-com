@@ -92,4 +92,20 @@ let products = JSON.parse(localStorage.getItem('products')) || [
     }
     displayProducts(products);
   });
-  
+
+  // Add event listener to "Add to cart" button
+  document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      let product = products.find((product) => product.productName === e.target.dataset.productName);
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.push(product);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      alert('Item added to cart!');
+      
+      // Update cart counter
+      updateCartCounter();
+      
+      // Display cart items on checkout page
+      displayCartItemsOnCheckoutPage();
+    });
+  });
