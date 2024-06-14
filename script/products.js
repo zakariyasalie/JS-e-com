@@ -1,6 +1,7 @@
 // Create products and store it on the local storage
 let products = JSON.parse(localStorage.getItem('products')) || [
     {
+        id: 1,
       productName: "BMW M4 GTS",
       category: "Sports Car",
       description: "BMW M4 GTS",
@@ -8,6 +9,7 @@ let products = JSON.parse(localStorage.getItem('products')) || [
       img_url: "https://zakariyasalie.github.io/allimages/images/M4GTS1.jpg"
     },
     {
+        id: 2,
       productName: "Ford Mustang",
       category: "Muscle Car",
       description: "5.0L V8 engine",
@@ -15,6 +17,7 @@ let products = JSON.parse(localStorage.getItem('products')) || [
       img_url: "https://zakariyasalie.github.io/allimages/images/FM.jpg"
     },
     {
+        id: 3,
       productName: "Nissan GTR Skyline R35",
       category: "JDM Cars",
       description: "3.2L V6 biturbo",
@@ -22,6 +25,7 @@ let products = JSON.parse(localStorage.getItem('products')) || [
       img_url: "https://zakariyasalie.github.io/allimages/images/R35.jpg"
     },
     {
+        id: 4,
       productName: "Audi R8 V10+",
       category: "Sports Car",
       description: "V10",
@@ -29,6 +33,7 @@ let products = JSON.parse(localStorage.getItem('products')) || [
       img_url: "https://zakariyasalie.github.io/allimages/images/R8.jpg"
     },
     {
+        id: 5,
       productName: "Golf R Mark8",
       category: "Family Car",
       description: "Mk8R Golf",
@@ -59,7 +64,7 @@ let products = JSON.parse(localStorage.getItem('products')) || [
             <h5 class="card-title">${product.productName}</h5>
             <p class="card-text">${product.description}</p>
             <p class="card-text">${product.amount}</p>
-            <a href="#" class="btn btn-primary">Add to cart</a>
+           <button type='button' class="btn btn-success" onclick='addToCart(${JSON.stringify(product)})'>Add to cart</button>
           </div>
         </div>
       `;
@@ -92,20 +97,32 @@ let products = JSON.parse(localStorage.getItem('products')) || [
     }
     displayProducts(products);
   });
+  // Add to cart
+let cart = JSON.parse(localStorage.getItem('checkout')) || [];
+function addToCart(product) {
+    try {
+        cart.push(product);
+        localStorage.setItem('checkout', JSON.stringify(cart));
+        document.querySelector('[counter]').textContent = cart.length || 0;
+    } catch (e) {
+        alert('The Checkout is under maintenance');
+    }
+}
+window.onload = () => {
+    document.querySelector('[counter]').textContent = cart.length || 0;
+}; 
 
-  // Add event listener to "Add to cart" button
-  document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      let product = products.find((product) => product.productName === e.target.dataset.productName);
-      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-      cartItems.push(product);
-      localStorage.setItem('cart', JSON.stringify(cartItems));
-      alert('Item added to cart!');
-      
-      // Update cart counter
-      updateCartCounter();
-      
-      // Display cart items on checkout page
-      displayCartItemsOnCheckoutPage();
-    });
-  });
+function addToCart(product) {
+    if (!product || !product.id || !product.productName) {
+      alert('Invalid product. Please try again.');
+      return;
+    }
+    try {
+      cart.push(product);
+      localStorage.setItem('checkout', JSON.stringify(cart));
+      document.querySelector('[counter]').textContent = cart.length || 0;
+    } catch (e) {
+      console.error('Error adding product to cart:', e);
+      alert('An error occurred while adding the product to the cart. Please try again later.');
+    }
+  }

@@ -363,9 +363,9 @@ main .container-fluid .row .col-md-6 {
     color: red !important;
   }
 
-  .img-fluid, h2, h3, p {
-    margin-bottom: 0px;
-    margin-top: 100px;
+  .img-fluid, h2, h3, p, h6 {
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   #Team p {
@@ -392,4 +392,22 @@ main .container-fluid .row .col-md-6 {
 
   .adminlabel {
     color: red;
+  }
+
+  h6 {
+    font-size: 1rem; /* or any other font size you prefer */
+  }
+
+  .check {
+    position: absolute; /* set position to absolute */
+    top: 100px; /* adjust the top position to your liking */
+    left: 50%; /* center horizontally */
+    transform: translateX(-50%); /* center horizontally */
+    z-index: 1; /* ensure it's on top of other elements */
+  }
+  
+  .check table {
+    margin-top: 20px; /* add some margin top to move the table down */
+    margin: 0 auto; /* center the table horizontally */
+    padding: 0; /* reset padding */
   }
